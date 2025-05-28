@@ -1,0 +1,29 @@
+
+{
+  "manifest_version": 3,
+  "name": "YouTube Info to Obsidian",
+  "version": "1.0",
+  "description": "Extract YouTube video/channel/playlist info and copy as Obsidian markdown.",
+  "permissions": [
+    "contextMenus","scripting", "tabs", "activeTab", "clipboardWrite"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"],
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}
